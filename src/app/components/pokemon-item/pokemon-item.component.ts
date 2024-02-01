@@ -8,4 +8,8 @@ import { Component } from "@angular/core";
 export class PokemonItemComponent {
   name = 'Bulbizarre';
   level = Math.round(Math.random() * 10);
+
+  getType() {
+    return this.level < 5 ? 'GRASS' : 'FIRE';
+  }
 }
