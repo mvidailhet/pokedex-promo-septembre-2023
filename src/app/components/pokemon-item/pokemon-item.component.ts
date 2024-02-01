@@ -6,5 +6,6 @@ import { Component } from "@angular/core";
   styleUrls: ['./pokemon-item.component.scss'],
 })
 export class PokemonItemComponent {
-
+  name = 'Bulbizarre';
+  level = Math.round(Math.random() * 10);
 }
