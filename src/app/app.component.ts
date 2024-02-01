@@ -7,6 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-pokedex';
-
   userInput = 'coucou';
+
+  isAddBtnDisabled = false;
+
+  constructor() {
+    setTimeout(() => {
+      this.isAddBtnDisabled = true;
+    }, 3000);
+  }
+
 }

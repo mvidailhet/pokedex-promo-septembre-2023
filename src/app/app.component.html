@@ -1,7 +1,15 @@
 <div class="container-fluid mt-4">
   <h1>{{ title }}</h1>
 
-  <input class="form-control" type="text" [(ngModel)]="userInput" />
+  <div class="row">
+    <div class="col">
+      <input class="form-control" type="text" [(ngModel)]="userInput" />
+    </div>
+    <div class="col-2">
+      <button [disabled]="isAddBtnDisabled" class="btn btn-primary">ajouter</button>
+    </div>
+  </div>
+
 
   <h2 class="mt-4">{{ userInput }}</h2>
 
