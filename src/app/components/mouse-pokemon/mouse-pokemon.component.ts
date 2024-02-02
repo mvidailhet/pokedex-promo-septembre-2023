@@ -22,8 +22,8 @@ export class MousePokemonComponent {
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
     this.mousePokemonData.position = {
-      left: `${event.clientX}px`,
-      top: `${event.clientY}px`
+      left: `${event.clientX + 10 }px`,
+      top: `${event.clientY + 10 }px`
     }
   }
 
