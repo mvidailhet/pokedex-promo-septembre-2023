@@ -7,15 +7,24 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-pokedex';
-  jsInputValue = '';
+  newPokemonName = '';
+  isPokemonAdded = false;
 
   addPokemon() {
-    console.log(`adding pokemon ${this.jsInputValue}`);
+    console.log(`adding pokemon ${this.newPokemonName}`);
+    this.showAddedPokemonNotif();
+  }
+
+  showAddedPokemonNotif() {
+    this.isPokemonAdded = true;
+    setTimeout(() => {
+      this.isPokemonAdded = false;
+    }, 3000);
   }
 
   onInputChange(event: Event) {
     const inputElt = event.target as HTMLInputElement;
-    this.jsInputValue = inputElt.value;
+    this.newPokemonName = inputElt.value;
   }
 
 }
