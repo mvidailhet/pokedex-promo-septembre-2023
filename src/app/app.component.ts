@@ -25,4 +25,8 @@ export class AppComponent {
     }, 3000);
   }
 
+  onPokemonDelete(index: number) {
+    this.pokemons.splice(index, 1);
+    console.log('deleting pokemon in list');
+  }
 }
