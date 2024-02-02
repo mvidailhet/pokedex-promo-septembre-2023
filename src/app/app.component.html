@@ -17,8 +17,9 @@
     <ng-template #noPokemon> Aucun pokemon a été ajouté </ng-template>
   </div>
 
-  <div *ngFor="let pokemon of pokemons; let pokemonIndex = index">
-    {{ pokemonIndex }} - <app-pokemon-item />
+  <div *ngFor="let pokemonName of pokemons; let pokemonIndex = index">
+    {{ pokemonIndex }} -
+    <app-pokemon-item [name]="pokemonName" />
   </div>
 
   <div
