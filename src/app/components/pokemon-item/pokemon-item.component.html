@@ -1,4 +1,10 @@
-<div class="pokemon-item p-3 row align-items-center my-2">
+<div
+  class="pokemon-item p-3 row align-items-center my-2"
+  [ngStyle]="{
+    'background-color': gender === 'male' ? 'blue' : 'pink',
+    color: gender === 'male' ? 'white' : 'black'
+  }"
+>
   <div class="col">
     <img
       class="pokemon-image"
@@ -6,6 +12,6 @@
     />
   </div>
   <div class="col">{{ name }}</div>
-  <div class="col">level: {{ level }}</div>
+  <div class="col">gender: {{ gender }}</div>
   <div class="col">type: {{ getType() }}</div>
 </div>
