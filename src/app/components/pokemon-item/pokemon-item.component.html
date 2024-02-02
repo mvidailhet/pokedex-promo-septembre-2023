@@ -1,9 +1,6 @@
 <div
   class="pokemon-item p-3 row align-items-center my-2"
-  [ngStyle]="{
-    'background-color': gender === 'male' ? 'blue' : 'pink',
-    color: gender === 'male' ? 'white' : 'black'
-  }"
+  [ngClass]="{ male: gender === 'male', female: gender === 'female' }"
 >
   <div class="col">
     <img
