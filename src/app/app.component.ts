@@ -7,12 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-pokedex';
-  ngModelInputValue = 'coucou';
-
   jsInputValue = '';
 
   addPokemon() {
-    console.log(`adding pokemon ${this.ngModelInputValue}`);
+    console.log(`adding pokemon ${this.jsInputValue}`);
   }
 
   onInputChange(event: Event) {
