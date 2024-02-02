@@ -1,7 +1,11 @@
-<div class="pokemon-item p-3">
-  <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png">
-  <div>{{ name }}</div>
-  <div>level: {{ level }}</div>
-
-  <div> type: {{ getType() }} </div>
+<div class="pokemon-item p-3 row align-items-center my-2">
+  <div class="col">
+    <img
+      class="pokemon-image"
+      src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
+    />
+  </div>
+  <div class="col">{{ name }}</div>
+  <div class="col">level: {{ level }}</div>
+  <div class="col">type: {{ getType() }}</div>
 </div>
