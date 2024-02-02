@@ -7,12 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-pokedex';
-  newPokemonName = '';
+  newPokemonName?: string;
   isPokemonAdded = false;
 
   pokemons: string[] = [];
 
   addPokemon() {
+    if (this.newPokemonName === undefined) return;
     this.pokemons.push(this.newPokemonName);
     this.showAddedPokemonNotif();
   }
