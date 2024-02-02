@@ -10,8 +10,10 @@ export class AppComponent {
   newPokemonName = '';
   isPokemonAdded = false;
 
+  pokemons: string[] = [];
+
   addPokemon() {
-    console.log(`adding pokemon ${this.newPokemonName}`);
+    this.pokemons.push(this.newPokemonName);
     this.showAddedPokemonNotif();
   }
 
@@ -20,11 +22,6 @@ export class AppComponent {
     setTimeout(() => {
       this.isPokemonAdded = false;
     }, 3000);
-  }
-
-  onInputChange(event: Event) {
-    const inputElt = event.target as HTMLInputElement;
-    this.newPokemonName = inputElt.value;
   }
 
 }
