@@ -7,26 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-pokedex';
-  newPokemonName?: string;
-  isPokemonAdded = false;
-
-  pokemons: string[] = [];
-
-  addPokemon() {
-    if (this.newPokemonName === undefined) return;
-    this.pokemons.push(this.newPokemonName);
-    this.showAddedPokemonNotif();
-  }
-
-  showAddedPokemonNotif() {
-    this.isPokemonAdded = true;
-    setTimeout(() => {
-      this.isPokemonAdded = false;
-    }, 3000);
-  }
-
-  onPokemonDelete(index: number) {
-    this.pokemons.splice(index, 1);
-    console.log('deleting pokemon in list');
-  }
 }

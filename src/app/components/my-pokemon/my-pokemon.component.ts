@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-my-pokemon',
@@ -7,17 +7,20 @@ import { Component } from '@angular/core';
 })
 export class MyPokemonComponent {
   types = ['FEU', 'EAU', 'PLANTE'];
-  names = ['Bulbizarre', 'Dracofeu', 'Carapuce'];
   type = this.getRandomIndexInArray(this.types);
-  name = this.getRandomIndexInArray(this.names);
-  isBtnDisabled = false;
 
-  changeName() {
-    this.name = this.getRandomIndexInArray(this.names);
-    this.isBtnDisabled = true;
-  }
+  @Input() name?: string;
+  @Input() gender?: string;
+
+  @Output() delete = new EventEmitter();
+
+  isBtnDisabled = false;
 
   getRandomIndexInArray(array: string[]) {
     return array[Math.floor(Math.random() * array.length)];
+  }
+
+  deletePokemon() {
+    this.delete.emit();
   }
 }

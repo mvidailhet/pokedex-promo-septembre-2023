@@ -3,3 +3,16 @@
   padding: 10px;
   margin-bottom: 5px;
 }
+
+.pokemon-item {
+
+  &.gender-male {
+    background-color: blue;
+    color: white;
+  }
+
+  &.gender-female {
+    background-color: pink;
+  }
+}
+

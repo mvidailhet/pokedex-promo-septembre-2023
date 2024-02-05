@@ -1,1 +1,27 @@
-<p>pokemon-list works!</p>
+<div class="row">
+  <div class="col">
+    <input class="form-control" type="text" [(ngModel)]="newPokemonName" />
+  </div>
+  <div class="col-2">
+    <button (click)="addPokemon()" class="btn btn-primary">ajouter</button>
+  </div>
+</div>
+
+<h2 class="my-4">{{ newPokemonName }}</h2>
+
+<div *ngFor="let pokemon of pokemons; let pokemonIndex = index">
+  <app-my-pokemon
+    [name]="pokemon.name"
+    [gender]="pokemon.gender"
+    (delete)="onPokemonDelete(pokemonIndex)"
+  />
+</div>
+
+<div
+  *ngIf="isPokemonAdded || isPokemonDeleted"
+  class="notification my-4 p-3 bg-success text-light"
+  [ngClass]="{ 'bg-success': isPokemonAdded, 'bg-danger': isPokemonDeleted }"
+>
+  <span *ngIf="isPokemonAdded">Le pokémon {{ newPokemonName }} a été ajouté</span>
+  <span *ngIf="isPokemonDeleted">Le pokémon a été supprimé</span>
+</div>
