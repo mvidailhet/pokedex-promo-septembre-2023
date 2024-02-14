@@ -16,14 +16,12 @@ export class PokemonListComponent {
   pokemons: Pokemon[] = this.pokemonService.pokemons;
 
   constructor(
-    private loggingService: LoggingService,
     private pokemonService: PokemonService
   ) {}
 
   onAddPokemonBtnClick() {
     if (this.newPokemonName === undefined) return;
     this.pokemonService.addPokemon(this.newPokemonName);
-    this.loggingService.logText(`adding pokemon ${this.newPokemonName}`);
     this.showAddedPokemonNotif();
   }
 

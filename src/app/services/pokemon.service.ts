@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Pokemon, pokemonGenders } from '../models/pokemon';
+import { LoggingService } from './logging.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class PokemonService {
 
   pokemons: Pokemon[] = [];
 
-  constructor() {
+  constructor(private loggingService: LoggingService) {
     this.loadPokemons();
   }
 
@@ -26,7 +27,7 @@ export class PokemonService {
 
     this.storePokemons();
 
-    //this.loggingService.logText(`adding pokemon ${ this.newPokemonName }`);
+    this.loggingService.logText(`adding pokemon ${ name }`);
     //this.showAddedPokemonNotif();
   }
 
