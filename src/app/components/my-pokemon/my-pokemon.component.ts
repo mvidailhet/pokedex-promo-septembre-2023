@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { LoggingService } from 'src/app/services/logging.service';
 
 @Component({
   selector: 'app-my-pokemon',
@@ -15,6 +16,10 @@ export class MyPokemonComponent {
   @Output() delete = new EventEmitter();
 
   isBtnDisabled = false;
+
+  constructor(loggingService: LoggingService) {
+    loggingService.logText('create pokemon');
+  }
 
   getRandomIndexInArray(array: string[]) {
     return array[Math.floor(Math.random() * array.length)];

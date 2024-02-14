@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoggingService } from 'src/app/services/logging.service';
 
 export interface Pokemon {
   name: string;
@@ -11,7 +12,7 @@ type PokemonGender = typeof pokemonGenders[number];
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
-  styleUrls: ['./pokemon-list.component.scss']
+  styleUrls: ['./pokemon-list.component.scss'],
 })
 export class PokemonListComponent {
   newPokemonName?: string;
@@ -19,6 +20,10 @@ export class PokemonListComponent {
   isPokemonDeleted = false;
 
   pokemons: Pokemon[] = [];
+
+  constructor(private loggingService: LoggingService) {
+    this.loggingService.logText('create pokemon list');
+  }
 
   addPokemon() {
     if (this.newPokemonName === undefined) return;
