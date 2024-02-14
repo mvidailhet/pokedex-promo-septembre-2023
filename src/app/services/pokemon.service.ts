@@ -5,8 +5,13 @@ import { Pokemon, pokemonGenders } from '../models/pokemon';
   providedIn: 'root'
 })
 export class PokemonService {
+  static STORAGE_POKEMON_KEY = 'pokemons';
 
   pokemons: Pokemon[] = [];
+
+  constructor() {
+    this.loadPokemons();
+  }
 
   addPokemon(name: string) {
 
@@ -18,6 +23,9 @@ export class PokemonService {
       name,
       gender: this.getRandomIndexInGenderArray(),
     });
+
+    this.storePokemons();
+
     //this.loggingService.logText(`adding pokemon ${ this.newPokemonName }`);
     //this.showAddedPokemonNotif();
   }
@@ -25,6 +33,16 @@ export class PokemonService {
   deletePokemon(index: number) {
     this.pokemons.splice(index, 1);
     //this.showDeletedPokemonNotif();
+  }
+
+  storePokemons() {
+    localStorage.setItem(PokemonService.STORAGE_POKEMON_KEY, JSON.stringify(this.pokemons));
+  }
+
+  loadPokemons() {
+    const pokemonsStr = localStorage.getItem(PokemonService.STORAGE_POKEMON_KEY);
+    if (!pokemonsStr) return;
+    this.pokemons = JSON.parse(pokemonsStr);
   }
 
   getRandomIndexInGenderArray() {
