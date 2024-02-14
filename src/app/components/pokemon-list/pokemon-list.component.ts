@@ -5,7 +5,8 @@ export interface Pokemon {
   gender: PokemonGender;
 }
 
-export type PokemonGender = 'male' | 'female';
+const pokemonGenders = ['male', 'female'] as const;
+type PokemonGender = typeof pokemonGenders[number];
 
 @Component({
   selector: 'app-pokemon-list',
@@ -16,7 +17,6 @@ export class PokemonListComponent {
   newPokemonName?: string;
   isPokemonAdded = false;
   isPokemonDeleted = false;
-  genders: PokemonGender[] = ['male', 'female'];
 
   pokemons: Pokemon[] = [];
 
@@ -24,7 +24,7 @@ export class PokemonListComponent {
     if (this.newPokemonName === undefined) return;
     this.pokemons.push({
       name: this.newPokemonName,
-      gender: this.getRandomIndexInGenderArray(this.genders),
+      gender: this.getRandomIndexInGenderArray(),
     });
 
     this.showAddedPokemonNotif();
@@ -49,7 +49,7 @@ export class PokemonListComponent {
     this.showDeletedPokemonNotif();
   }
 
-  getRandomIndexInGenderArray(array: PokemonGender[]) {
-    return array[Math.floor(Math.random() * array.length)];
+  getRandomIndexInGenderArray() {
+    return pokemonGenders[Math.floor(Math.random() * pokemonGenders.length)];
   }
 }
