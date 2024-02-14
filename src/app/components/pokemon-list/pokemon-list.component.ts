@@ -21,9 +21,7 @@ export class PokemonListComponent {
 
   pokemons: Pokemon[] = [];
 
-  constructor(private loggingService: LoggingService) {
-    this.loggingService.logText('create pokemon list');
-  }
+  constructor(private loggingService: LoggingService) {}
 
   addPokemon() {
     if (this.newPokemonName === undefined) return;
@@ -31,7 +29,7 @@ export class PokemonListComponent {
       name: this.newPokemonName,
       gender: this.getRandomIndexInGenderArray(),
     });
-
+    this.loggingService.logText(`adding pokemon ${ this.newPokemonName }`);
     this.showAddedPokemonNotif();
   }
 
