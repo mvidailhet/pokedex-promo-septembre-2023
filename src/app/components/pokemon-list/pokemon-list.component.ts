@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
+import { Pokemon } from 'src/app/models/pokemon';
 import { LoggingService } from 'src/app/services/logging.service';
-
-export interface Pokemon {
-  name: string;
-  gender: PokemonGender;
-}
-
-const pokemonGenders = ['male', 'female'] as const;
-type PokemonGender = typeof pokemonGenders[number];
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -19,18 +13,23 @@ export class PokemonListComponent {
   isPokemonAdded = false;
   isPokemonDeleted = false;
 
-  pokemons: Pokemon[] = [];
+  pokemons: Pokemon[] = this.pokemonService.pokemons;
 
-  constructor(private loggingService: LoggingService) {}
+  constructor(
+    private loggingService: LoggingService,
+    private pokemonService: PokemonService
+  ) {}
 
-  addPokemon() {
+  onAddPokemonBtnClick() {
     if (this.newPokemonName === undefined) return;
-    this.pokemons.push({
-      name: this.newPokemonName,
-      gender: this.getRandomIndexInGenderArray(),
-    });
-    this.loggingService.logText(`adding pokemon ${ this.newPokemonName }`);
+    this.pokemonService.addPokemon(this.newPokemonName);
+    this.loggingService.logText(`adding pokemon ${this.newPokemonName}`);
     this.showAddedPokemonNotif();
+  }
+
+  onPokemonDelete(index: number) {
+    this.pokemonService.deletePokemon(index);
+    this.showDeletedPokemonNotif();
   }
 
   showAddedPokemonNotif() {
@@ -45,14 +44,5 @@ export class PokemonListComponent {
     setTimeout(() => {
       this.isPokemonDeleted = false;
     }, 3000);
-  }
-
-  onPokemonDelete(index: number) {
-    this.pokemons.splice(index, 1);
-    this.showDeletedPokemonNotif();
-  }
-
-  getRandomIndexInGenderArray() {
-    return pokemonGenders[Math.floor(Math.random() * pokemonGenders.length)];
   }
 }
