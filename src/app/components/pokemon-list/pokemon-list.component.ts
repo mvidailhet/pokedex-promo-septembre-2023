@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 
 export interface Pokemon {
   name: string;
-  gender: string;
+  gender: PokemonGender;
 }
+
+export type PokemonGender = 'male' | 'female';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -14,7 +16,7 @@ export class PokemonListComponent {
   newPokemonName?: string;
   isPokemonAdded = false;
   isPokemonDeleted = false;
-  genders = ['male', 'female'];
+  genders: PokemonGender[] = ['male', 'female'];
 
   pokemons: Pokemon[] = [];
 
@@ -22,8 +24,9 @@ export class PokemonListComponent {
     if (this.newPokemonName === undefined) return;
     this.pokemons.push({
       name: this.newPokemonName,
-      gender: this.getRandomIndexInArray(this.genders),
+      gender: this.getRandomIndexInGenderArray(this.genders),
     });
+
     this.showAddedPokemonNotif();
   }
 
@@ -46,7 +49,7 @@ export class PokemonListComponent {
     this.showDeletedPokemonNotif();
   }
 
-  getRandomIndexInArray(array: string[]) {
+  getRandomIndexInGenderArray(array: PokemonGender[]) {
     return array[Math.floor(Math.random() * array.length)];
   }
 }
