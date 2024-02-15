@@ -21,11 +21,9 @@ export class PokemonListComponent {
   onAddPokemonBtnClick() {
     if (this.newPokemonName === undefined) return;
     this.pokemonService.addPokemon(this.newPokemonName);
-    this.notificationsService.showAddedPokemonNotif();
   }
 
   onPokemonDelete(index: number) {
     this.pokemonService.deletePokemon(index);
-    this.notificationsService.showDeletedPokemonNotif();
   }
 }

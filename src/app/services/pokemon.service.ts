@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Pokemon, pokemonGenders } from '../models/pokemon';
 import { LoggingService } from './logging.service';
+import { NotificationsService } from './notifications.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PokemonService {
   static STORAGE_POKEMON_KEY = 'pokemons';
 
   pokemons: Pokemon[] = [];
 
-  constructor(private loggingService: LoggingService) {
+  constructor(
+    private loggingService: LoggingService,
+    private notificationsService: NotificationsService
+  ) {
     this.loadPokemons();
   }
 
   addPokemon(name: string) {
-
     if (this.pokemons.find((pokemon) => pokemon.name === name)) {
       return;
     }
@@ -27,21 +30,26 @@ export class PokemonService {
 
     this.storePokemons();
 
-    this.loggingService.logText(`adding pokemon ${ name }`);
-    //this.showAddedPokemonNotif();
+    this.loggingService.logText(`adding pokemon ${name}`);
+    this.notificationsService.showAddedPokemonNotif();
   }
 
   deletePokemon(index: number) {
     this.pokemons.splice(index, 1);
-    //this.showDeletedPokemonNotif();
+    this.notificationsService.showDeletedPokemonNotif();
   }
 
   storePokemons() {
-    localStorage.setItem(PokemonService.STORAGE_POKEMON_KEY, JSON.stringify(this.pokemons));
+    localStorage.setItem(
+      PokemonService.STORAGE_POKEMON_KEY,
+      JSON.stringify(this.pokemons)
+    );
   }
 
   loadPokemons() {
-    const pokemonsStr = localStorage.getItem(PokemonService.STORAGE_POKEMON_KEY);
+    const pokemonsStr = localStorage.getItem(
+      PokemonService.STORAGE_POKEMON_KEY
+    );
     if (!pokemonsStr) return;
     this.pokemons = JSON.parse(pokemonsStr);
   }
