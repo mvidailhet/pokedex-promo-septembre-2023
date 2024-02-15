@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Pokemon, pokemonGenders } from '../models/pokemon';
 import { LoggingService } from './logging.service';
 import { NotificationsService } from './notifications.service';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +14,9 @@ export class PokemonService {
 
   constructor(
     private loggingService: LoggingService,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private apiService: ApiService
   ) {
-    this.loadPokemons();
   }
 
   addPokemon(name: string) {
@@ -23,12 +24,14 @@ export class PokemonService {
       return;
     }
 
-    this.pokemons.push({
+    const pokemon = {
       name,
       gender: this.getRandomIndexInGenderArray(),
-    });
+    };
 
-    this.storePokemons();
+    this.pokemons.push(pokemon);
+
+    this.apiService.postPokemon(pokemon);
 
     this.loggingService.logText(`adding pokemon ${name}`);
     this.notificationsService.showNotification(`Le pokemon ${ name } a été ajouté`, 'success');
