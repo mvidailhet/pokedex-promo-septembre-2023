@@ -4,20 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class NotificationsService {
-  isPokemonAdded = false;
-  isPokemonDeleted = false;
+  message?: string;
+  type?: 'danger' | 'success';
 
-  showAddedPokemonNotif() {
-    this.isPokemonAdded = true;
+  showNotification(message: string, type: 'danger' | 'success') {
+    this.message = message;
+    this.type = type;
     setTimeout(() => {
-      this.isPokemonAdded = false;
-    }, 3000);
-  }
-
-  showDeletedPokemonNotif() {
-    this.isPokemonDeleted = true;
-    setTimeout(() => {
-      this.isPokemonDeleted = false;
+      this.message = undefined;
     }, 3000);
   }
 }

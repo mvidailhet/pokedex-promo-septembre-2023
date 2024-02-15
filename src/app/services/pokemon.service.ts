@@ -31,12 +31,12 @@ export class PokemonService {
     this.storePokemons();
 
     this.loggingService.logText(`adding pokemon ${name}`);
-    this.notificationsService.showAddedPokemonNotif();
+    this.notificationsService.showNotification(`Le pokemon ${ name } a été ajouté`, 'success');
   }
 
   deletePokemon(index: number) {
     this.pokemons.splice(index, 1);
-    this.notificationsService.showDeletedPokemonNotif();
+    this.notificationsService.showNotification(`Le pokemon a été supprimé`, 'danger');
   }
 
   storePokemons() {
