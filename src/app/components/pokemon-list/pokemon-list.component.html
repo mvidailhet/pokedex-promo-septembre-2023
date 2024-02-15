@@ -11,7 +11,7 @@
 
 <h2 class="my-4">{{ newPokemonName }}</h2>
 
-<div *ngFor="let pokemon of pokemons; let pokemonIndex = index">
+<div *ngFor="let pokemon of pokemonService.pokemons; let pokemonIndex = index">
   <app-my-pokemon
     [name]="pokemon.name"
     [gender]="pokemon.gender"

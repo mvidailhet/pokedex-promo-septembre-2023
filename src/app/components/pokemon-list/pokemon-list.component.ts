@@ -13,7 +13,7 @@ export class PokemonListComponent {
   pokemons: Pokemon[] = this.pokemonService.pokemons;
 
   constructor(
-    private pokemonService: PokemonService
+    public pokemonService: PokemonService
   ) {}
 
   onAddPokemonBtnClick() {

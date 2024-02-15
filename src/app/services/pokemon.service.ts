@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Pokemon, pokemonGenders } from '../models/pokemon';
 import { LoggingService } from './logging.service';
 import { NotificationsService } from './notifications.service';
-import { ApiService } from './api.service';
+import { ApiService, GetPokemonsRes } from './api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +17,10 @@ export class PokemonService {
     private notificationsService: NotificationsService,
     private apiService: ApiService
   ) {
+    this.apiService.getPokemons().subscribe((apiPokemons: GetPokemonsRes) => {
+      const pokemons = Object.values(apiPokemons);
+      this.pokemons = pokemons;
+    });
   }
 
   addPokemon(name: string) {
