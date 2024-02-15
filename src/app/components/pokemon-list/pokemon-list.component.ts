@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon';
-import { NotificationsService } from 'src/app/services/notifications.service';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -14,8 +13,7 @@ export class PokemonListComponent {
   pokemons: Pokemon[] = this.pokemonService.pokemons;
 
   constructor(
-    private pokemonService: PokemonService,
-    public notificationsService: NotificationsService
+    private pokemonService: PokemonService
   ) {}
 
   onAddPokemonBtnClick() {

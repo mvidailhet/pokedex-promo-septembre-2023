@@ -18,12 +18,3 @@
     (delete)="onPokemonDelete(pokemonIndex)"
   />
 </div>
-
-<div
-  *ngIf="notificationsService.currentNotification"
-  class="notification my-4 p-3 text-light bg-{{
-    notificationsService.currentNotification.type
-  }}"
->
-  {{ notificationsService.currentNotification.message }}
-</div>

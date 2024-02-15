@@ -8,6 +8,7 @@ import { PokemonItemComponent } from './components/pokemon-item/pokemon-item.com
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 import { MyPokemonComponent } from './components/my-pokemon/my-pokemon.component';
 import { MousePokemonComponent } from './components/mouse-pokemon/mouse-pokemon.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -15,14 +16,11 @@ import { MousePokemonComponent } from './components/mouse-pokemon/mouse-pokemon.
     PokemonItemComponent,
     PokemonListComponent,
     MyPokemonComponent,
-    MousePokemonComponent
+    MousePokemonComponent,
+    NotificationsComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    NgbModule
-  ],
+  imports: [BrowserModule, FormsModule, NgbModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
