@@ -1,17 +1,25 @@
 import { Injectable } from '@angular/core';
 
+export type NotificationType = 'danger' | 'success';
+
+export interface Notification {
+  message: string;
+  type: NotificationType;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationsService {
-  message?: string;
-  type?: 'danger' | 'success';
+  currentNotification?: Notification;
 
-  showNotification(message: string, type: 'danger' | 'success') {
-    this.message = message;
-    this.type = type;
+  showNotification(message: string, type: NotificationType) {
+    this.currentNotification = {
+      message,
+      type,
+    };
     setTimeout(() => {
-      this.message = undefined;
+      this.currentNotification = undefined;
     }, 3000);
   }
 }

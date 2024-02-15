@@ -20,12 +20,10 @@
 </div>
 
 <div
-  *ngIf="notificationsService.message"
-  class="notification my-4 p-3 text-light"
-  [ngClass]="{
-    'bg-success': notificationsService.type === 'success',
-    'bg-danger': notificationsService.type === 'danger'
-  }"
+  *ngIf="notificationsService.currentNotification"
+  class="notification my-4 p-3 text-light bg-{{
+    notificationsService.currentNotification.type
+  }}"
 >
-  {{ notificationsService.message }}
+  {{ notificationsService.currentNotification.message }}
 </div>
