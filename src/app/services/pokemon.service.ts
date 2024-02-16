@@ -23,15 +23,9 @@ export class PokemonService {
         this.pokemons = pokemons;
         console.log('got pokemons');
       },
-      error: (error) => {
-        console.log(error);
+      complete: () => {
         this.pokemons = [];
-        this.notificationsService.showNotification(
-          'Un problème est survenu',
-          'danger'
-        );
       },
-      complete: () => console.log('comleted'),
     });
   }
 

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CreatePokemon, Pokemon } from '../models/pokemon';
-import { Observable, delay, map } from 'rxjs';
+import { Observable, catchError, delay, map } from 'rxjs';
+import { NotificationsService } from './notifications.service';
 
 export interface GetPokemonsRes {
   [id: string]: Pokemon;
@@ -18,7 +19,7 @@ export class ApiService {
   baseUrl =
     'https://pokedex-promo-septembre-2023-default-rtdb.europe-west1.firebasedatabase.app';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private notificationsService: NotificationsService) {}
 
   postPokemon(pokemon: CreatePokemon) {
     return this.httpClient
@@ -32,7 +33,7 @@ export class ApiService {
 
   getPokemons(): Observable<Pokemon[]> {
     return this.httpClient
-      .get<GetPokemonsRes>(`${this.baseUrl}/pokemons.json`)
+      .get<GetPokemonsRes>(`${this.baseUrl}gfd/pokemons.json`)
       .pipe(
         map((getPokemonRes: GetPokemonsRes) => {
           const ids = Object.keys(getPokemonRes);
@@ -40,6 +41,13 @@ export class ApiService {
             const pokemon: CreatePokemon = getPokemonRes[id];
             return { ...pokemon, id };
           });
+        }),
+        catchError((error) => {
+          this.notificationsService.showNotification(
+            'Un problème est survenu',
+            'danger'
+          );
+          return [];
         }),
         delay(3000),
       );
