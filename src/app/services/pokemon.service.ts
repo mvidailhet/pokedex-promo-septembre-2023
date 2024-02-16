@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Pokemon, pokemonGenders } from '../models/pokemon';
+import { CreatePokemon, Pokemon, pokemonGenders } from '../models/pokemon';
 import { LoggingService } from './logging.service';
 import { NotificationsService } from './notifications.service';
 import { ApiService, GetPokemonsRes } from './api.service';
@@ -28,20 +28,22 @@ export class PokemonService {
       return;
     }
 
-    const pokemon = {
+    const createPokemon: CreatePokemon = {
       name,
       gender: this.getRandomIndexInGenderArray(),
     };
 
-    this.pokemons.push(pokemon);
-
-    this.apiService.postPokemon(pokemon);
+    this.apiService.postPokemon(createPokemon).subscribe((id: string) => {
+      const pokemon: Pokemon = { ...createPokemon, id };
+      this.pokemons.push(pokemon);
+    });
 
     this.loggingService.logText(`adding pokemon ${name}`);
     this.notificationsService.showNotification(`Le pokemon ${ name } a été ajouté`, 'success');
   }
 
   deletePokemon(index: number) {
+    this.apiService.deletePokemon(this.pokemons[index].id);
     this.pokemons.splice(index, 1);
     this.notificationsService.showNotification(`Le pokemon a été supprimé`, 'danger');
   }
