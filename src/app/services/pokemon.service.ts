@@ -10,20 +10,24 @@ import { ApiService, GetPokemonsRes } from './api.service';
 export class PokemonService {
   static STORAGE_POKEMON_KEY = 'pokemons';
 
-  pokemons: Pokemon[] = [];
+  pokemons?: Pokemon[];
 
   constructor(
     private loggingService: LoggingService,
     private notificationsService: NotificationsService,
     private apiService: ApiService
   ) {
+    console.log('getting pokemons');
     this.apiService.getPokemons()
     .subscribe((pokemons: Pokemon[]) => {
       this.pokemons = pokemons;
+      console.log('got pokemons');
     });
   }
 
   addPokemon(name: string) {
+    if (this.pokemons === undefined) return;
+
     if (this.pokemons.find((pokemon) => pokemon.name === name)) {
       return;
     }
@@ -35,6 +39,7 @@ export class PokemonService {
 
     this.apiService.postPokemon(createPokemon).subscribe((id: string) => {
       const pokemon: Pokemon = { ...createPokemon, id };
+      if (!this.pokemons) return;
       this.pokemons.push(pokemon);
     });
 
@@ -43,6 +48,7 @@ export class PokemonService {
   }
 
   deletePokemon(index: number) {
+    if (!this.pokemons) return;
     this.apiService.deletePokemon(this.pokemons[index].id);
     this.pokemons.splice(index, 1);
     this.notificationsService.showNotification(`Le pokemon a été supprimé`, 'danger');

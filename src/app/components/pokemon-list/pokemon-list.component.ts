@@ -10,8 +10,6 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class PokemonListComponent {
   newPokemonName?: string;
 
-  pokemons: Pokemon[] = this.pokemonService.pokemons;
-
   constructor(
     public pokemonService: PokemonService
   ) {}

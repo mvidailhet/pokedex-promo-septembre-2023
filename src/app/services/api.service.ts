@@ -41,6 +41,7 @@ export class ApiService {
             return { ...pokemon, id };
           });
         }),
+        delay(3000),
       );
   }
 
