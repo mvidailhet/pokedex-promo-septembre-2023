@@ -18,10 +18,20 @@ export class PokemonService {
     private apiService: ApiService
   ) {
     console.log('getting pokemons');
-    this.apiService.getPokemons()
-    .subscribe((pokemons: Pokemon[]) => {
-      this.pokemons = pokemons;
-      console.log('got pokemons');
+    this.apiService.getPokemons().subscribe({
+      next: (pokemons: Pokemon[]) => {
+        this.pokemons = pokemons;
+        console.log('got pokemons');
+      },
+      error: (error) => {
+        console.log(error);
+        this.pokemons = [];
+        this.notificationsService.showNotification(
+          'Un problème est survenu',
+          'danger'
+        );
+      },
+      complete: () => console.log('comleted'),
     });
   }
 
@@ -44,14 +54,20 @@ export class PokemonService {
     });
 
     this.loggingService.logText(`adding pokemon ${name}`);
-    this.notificationsService.showNotification(`Le pokemon ${ name } a été ajouté`, 'success');
+    this.notificationsService.showNotification(
+      `Le pokemon ${name} a été ajouté`,
+      'success'
+    );
   }
 
   deletePokemon(index: number) {
     if (!this.pokemons) return;
     this.apiService.deletePokemon(this.pokemons[index].id);
     this.pokemons.splice(index, 1);
-    this.notificationsService.showNotification(`Le pokemon a été supprimé`, 'danger');
+    this.notificationsService.showNotification(
+      `Le pokemon a été supprimé`,
+      'danger'
+    );
   }
 
   storePokemons() {
