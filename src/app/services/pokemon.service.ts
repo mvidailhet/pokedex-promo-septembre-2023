@@ -17,8 +17,8 @@ export class PokemonService {
     private notificationsService: NotificationsService,
     private apiService: ApiService
   ) {
-    this.apiService.getPokemons().subscribe((apiPokemons: GetPokemonsRes) => {
-      const pokemons = Object.values(apiPokemons);
+    this.apiService.getPokemons()
+    .subscribe((pokemons: Pokemon[]) => {
       this.pokemons = pokemons;
     });
   }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pokemon } from '../models/pokemon';
+import { delay, map } from 'rxjs';
 
 export interface GetPokemonsRes {
   [id: string]: Pokemon;
@@ -24,6 +25,13 @@ export class ApiService {
   }
 
   getPokemons() {
-    return this.httpClient.get<GetPokemonsRes>(`${this.baseUrl}/pokemons.json`);
+    return this.httpClient.get<GetPokemonsRes>(`${this.baseUrl}/pokemons.json`)
+    .pipe(
+      map((getPokemonRes: GetPokemonsRes) => {
+        return Object.values(getPokemonRes);
+      }),
+      delay(3000),
+    )
+    ;
   }
 }
