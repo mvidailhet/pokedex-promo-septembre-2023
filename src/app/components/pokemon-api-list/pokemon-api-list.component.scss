@@ -1,3 +1,20 @@
 .pokemon-item {
   border-bottom: 1px solid black;
 }
+
+.type {
+
+  &.type-grass {
+    color: green;
+  }
+
+  &.type-fire {
+    color: orange;
+  }
+
+  &.type-water {
+    color: blue;
+  }
+
+
+}

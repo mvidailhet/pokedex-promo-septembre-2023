@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { GetPokemonsResult } from '../models/api-pokemon';
+import { GetPokemonsResult, PokemonDetail } from '../models/api-pokemon';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -15,5 +15,9 @@ export class PokeapiService {
       .pipe(
         map((getPokemonsResult: GetPokemonsResult) => getPokemonsResult.results)
       );
+  }
+
+  getPokemonFromUrl(url: string) {
+    return this.httpClient.get<PokemonDetail>(url);
   }
 }
