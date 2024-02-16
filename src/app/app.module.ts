@@ -10,6 +10,7 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list.com
 import { MyPokemonComponent } from './components/my-pokemon/my-pokemon.component';
 import { MousePokemonComponent } from './components/mouse-pokemon/mouse-pokemon.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { PokemonApiListComponent } from './components/pokemon-api-list/pokemon-api-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NotificationsComponent } from './components/notifications/notifications
     PokemonListComponent,
     MyPokemonComponent,
     MousePokemonComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    PokemonApiListComponent
   ],
   imports: [BrowserModule, FormsModule, NgbModule, HttpClientModule],
   providers: [],
