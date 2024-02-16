@@ -2,10 +2,10 @@ export interface GetPokemonsResult {
   count:    number;
   next:     string;
   previous: null;
-  results:  Result[];
+  results:  SimplePokemon[];
 }
 
-export interface Result {
+export interface SimplePokemon {
   name: string;
   url:  string;
 }

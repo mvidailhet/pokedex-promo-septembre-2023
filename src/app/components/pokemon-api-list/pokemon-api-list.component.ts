@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GetPokemonsResult } from 'src/app/models/api-pokemon';
+import { GetPokemonsResult, SimplePokemon } from 'src/app/models/api-pokemon';
 import { PokeapiService } from 'src/app/services/pokeapi.service';
 
 @Component({
@@ -8,13 +8,13 @@ import { PokeapiService } from 'src/app/services/pokeapi.service';
   styleUrls: ['./pokemon-api-list.component.scss']
 })
 export class PokemonApiListComponent {
+  pokemons?: SimplePokemon[];
 
   constructor(private pokeapiService: PokeapiService) {
     this.pokeapiService.getPokemons()
-    .subscribe((res: GetPokemonsResult) => {
-      res.results.forEach((pokemon) => {
-        console.log(pokemon.name);
-      });
+    .subscribe((pokemons: SimplePokemon[]) => {
+      this.pokemons = pokemons;
+      console.log(pokemons);
     });
   }
 }
