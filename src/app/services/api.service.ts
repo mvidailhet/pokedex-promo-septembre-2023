@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CreatePokemon, Pokemon } from '../models/pokemon';
-import { Observable, catchError, delay, map } from 'rxjs';
+import { Observable, catchError, delay, map, of } from 'rxjs';
 import { NotificationsService } from './notifications.service';
 
 export interface GetPokemonsRes {
@@ -47,7 +47,7 @@ export class ApiService {
             'Un problème est survenu',
             'danger'
           );
-          return [];
+          return of([]);
         }),
         delay(3000),
       );

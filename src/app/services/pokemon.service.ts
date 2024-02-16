@@ -22,10 +22,7 @@ export class PokemonService {
       next: (pokemons: Pokemon[]) => {
         this.pokemons = pokemons;
         console.log('got pokemons');
-      },
-      complete: () => {
-        this.pokemons = [];
-      },
+      }
     });
   }
 
