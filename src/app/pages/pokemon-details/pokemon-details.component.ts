@@ -52,6 +52,12 @@ export class PokemonDetailsComponent {
     });
   }
 
+  cry() {
+    if (!this.pokemon) return;
+    const audio = new Audio(this.pokemon.cries.latest);
+    audio.play();
+  }
+
   getPokemonImage(id: number) {
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
   }

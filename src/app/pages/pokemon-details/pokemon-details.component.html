@@ -6,13 +6,59 @@
       <img class="w-100" [src]="getPokemonImage(pokemon.id)" />
     </div>
     <div class="col">
-      <h1 class="my-4">{{ pokemon.name }}</h1>
+      <h1 class="my-4">{{ pokemon.name }} <button (click)="cry()" class="btn btn-primary">Cri</button></h1>
       <div>
         <ul class="d-flex flex-row gap-4 p-0">
           <li *ngFor="let type of pokemon.types" class="d-flex flex-column align-items-center gap-1">
             <img class="type-image" [src]="getPokemonTypeImage(type.type.name)"> {{ type.type.name }}
           </li>
         </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="my-5">
+    <h2>Statistiques</h2>
+    <div class="d-flex flex-column gap-3">
+      <div *ngFor="let stat of pokemon.stats" class="d-flex justify-content-between">
+        <span>{{ stat.stat.name }}</span>
+        <span>{{ stat.base_stat }}</span>
+      </div>
+    </div>
+  </div>
+
+<!--   <div class="my-5">
+    <h2>Capacités</h2>
+    <div class="d-flex flex-column gap-3">
+      <div *ngFor="let ability of pokemon.abilities" class="d-flex justify-content-between">
+        <span>{{ ability.ability.name }}</span>
+      </div>
+    </div>
+  </div> -->
+
+<!--   <div class="my-5">
+    <h2>Attaques</h2>
+    <div class="d-flex flex-column gap-3">
+      <div *ngFor="let move of pokemon.moves" class="d-flex justify-content-between">
+        <span>{{ move.move.name }}</span>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="my-5">
+    <h2>Informations</h2>
+    <div class="d-flex flex-column gap-3">
+      <div class="d-flex justify-content-between">
+        <span>Expérience de base</span>
+        <span>{{ pokemon.base_experience }}</span>
+      </div>
+      <div class="d-flex justify-content-between">
+        <span>Poids</span>
+        <span>{{ pokemon.weight }}</span>
+      </div>
+      <div class="d-flex justify-content-between">
+        <span>Taille</span>
+        <span>{{ pokemon.height }}</span>
       </div>
     </div>
   </div>
