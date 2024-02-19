@@ -15,12 +15,17 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'mypokemons',
     component: PokemonListComponent,
   },
   {
     path: 'pokeapi',
     component: PokemonApiListComponent
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'mypokemons',
   }
 ];
 
