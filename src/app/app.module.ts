@@ -15,6 +15,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PokemonComponent } from './pages/pokemon/pokemon.component';
 import { GeneralComponent } from './pages/pokemon/pages/general/general.component';
 import { DetailsComponent } from './pages/pokemon/pages/details/details.component';
+import { UnknownPageComponent } from './pages/unknown-page/unknown-page.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,14 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: 'mypokemons',
+  },
+  {
+    path: 'unknown-page',
+    component: UnknownPageComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'unknown-page'
   }
 ];
 
@@ -63,6 +72,7 @@ const routes: Routes = [
     PokemonComponent,
     GeneralComponent,
     DetailsComponent,
+    UnknownPageComponent,
   ],
   imports: [
     BrowserModule,
