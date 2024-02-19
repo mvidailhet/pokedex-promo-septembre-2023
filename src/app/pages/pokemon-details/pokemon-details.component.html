@@ -1,7 +1,7 @@
 <div *ngIf="pokemon" class="container-fluid mt-1">
   <a routerLink="/pokeapi">Retour à la liste</a>
 
-  <div class="row align-items-center">
+  <div class="row align-items-center mt-4">
     <div class="col-4">
       <img class="w-100" [src]="getPokemonImage(pokemon.id)" />
     </div>
@@ -16,4 +16,9 @@
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="pokemon" class="position-fixed bottom-0 w-100 d-flex justify-content-between">
+  <button class="btn btn-primary m-3" [disabled]="pokemon.id <= 1" routerLink="../{{ pokemon.id - 1 }}">Précédent</button>
+  <button class="btn btn-primary m-3" [disabled]="pokemon.id >= 898" routerLink="../{{ pokemon.id + 1 }}">Suivant</button>
 </div>
