@@ -1,5 +1,9 @@
 <div class="container-fluid mt-4">
-  <div class="row p-4 pokemon-item align-items-center" *ngFor="let pokemon of pokemons">
+  <div
+    [routerLink]="['/pokemon-api', pokemon.id]"
+    class="row p-4 pokemon-item align-items-center"
+    *ngFor="let pokemon of pokemons"
+  >
     <div class="col">
       <img [src]="pokemon.sprites.front_default" />
     </div>
@@ -7,8 +11,11 @@
       {{ pokemon.name }}
     </div>
     <div class="col">
-      <span class="type type-{{ type.type.name }}" *ngFor="let type of pokemon.types">
-      {{ type.type.name }}
+      <span
+        class="type type-{{ type.type.name }}"
+        *ngFor="let type of pokemon.types"
+      >
+        {{ type.type.name }}
       </span>
     </div>
   </div>

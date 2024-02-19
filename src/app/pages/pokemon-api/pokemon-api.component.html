@@ -1,0 +1,40 @@
+<div *ngIf="pokemon" class="container-fluid mt-4">
+  <a routerLink="/pokeapi">Retour à la liste</a>
+
+  <div class="row">
+    <div class="col-4">
+      <img
+        [src]="pokemon.sprites.front_default"
+        [alt]="pokemon.name"
+        class="img-fluid"
+      />
+    </div>
+    <div class="col">
+      <h1 class="my-4">{{ pokemon.name }}</h1>
+    </div>
+  </div>
+
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item" *ngFor="let navigationItem of navigation">
+      <a
+        class="nav-link"
+        [routerLink]="navigationItem.routerLink"
+        routerLinkActive="active"
+        >{{ navigationItem.title }}</a
+      >
+    </li>
+  </ul>
+
+  <div class="p-4">
+    <router-outlet></router-outlet>
+  </div>
+
+<!--   <button
+    [disabled]="!nextPokemonId"
+    class="btn btn-primary btn-next"
+    routerLink="../{{ nextPokemonId }}"
+  >
+    Suivant
+  </button> -->
+</div>
