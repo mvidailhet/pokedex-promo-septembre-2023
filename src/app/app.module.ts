@@ -16,6 +16,7 @@ import { GeneralComponent } from './pages/pokemon/pages/general/general.componen
 import { DetailsComponent } from './pages/pokemon/pages/details/details.component';
 import { UnknownPageComponent } from './pages/unknown-page/unknown-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import { PokemonDetailsComponent } from './pages/pokemon-details/pokemon-details.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AppRoutingModule } from './app-routing.module';
     GeneralComponent,
     DetailsComponent,
     UnknownPageComponent,
+    PokemonDetailsComponent,
   ],
   imports: [
     BrowserModule,

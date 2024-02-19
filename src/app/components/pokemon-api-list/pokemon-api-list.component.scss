@@ -1,5 +1,11 @@
 .pokemon-item {
   border-bottom: 1px solid black;
+
+  &:hover {
+    cursor: pointer;
+    background-color: lighten(lightblue, 15%);
+  }
+
 }
 
 .type {

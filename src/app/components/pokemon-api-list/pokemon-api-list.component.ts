@@ -22,6 +22,7 @@ export class PokemonApiListComponent {
           .getPokemonFromUrl(pokemon.url)
           .subscribe((pokemonDetail: PokemonDetail) => {
             this.pokemons.push(pokemonDetail);
+            console.log(pokemonDetail);
           });
       });
     });

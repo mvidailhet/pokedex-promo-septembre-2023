@@ -1,0 +1,19 @@
+<div *ngIf="pokemon" class="container-fluid mt-1">
+  <a routerLink="/pokeapi">Retour à la liste</a>
+
+  <div class="row align-items-center">
+    <div class="col-4">
+      <img class="w-100" [src]="getPokemonImage(pokemon.id)" />
+    </div>
+    <div class="col">
+      <h1 class="my-4">{{ pokemon.name }}</h1>
+      <div>
+        <ul class="d-flex flex-row gap-4 p-0">
+          <li *ngFor="let type of pokemon.types" class="d-flex flex-column align-items-center gap-1">
+            <img class="type-image" [src]="getPokemonTypeImage(type.type.name)"> {{ type.type.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { DetailsComponent } from './pages/pokemon/pages/details/details.componen
 import { GeneralComponent } from './pages/pokemon/pages/general/general.component';
 import { PokemonComponent } from './pages/pokemon/pokemon.component';
 import { UnknownPageComponent } from './pages/unknown-page/unknown-page.component';
+import { PokemonDetailsComponent } from './pages/pokemon-details/pokemon-details.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'pokeapi',
     component: PokemonApiListComponent,
+  },
+  {
+    path: 'pokemon-details/:id',
+    component: PokemonDetailsComponent,
   },
   {
     path: 'pokemon/:id',

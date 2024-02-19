@@ -7,14 +7,20 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class PokeapiService {
+  baseUrl = 'https://pokeapi.co/api/v2';
+
   constructor(private httpClient: HttpClient) {}
 
   getPokemons() {
     return this.httpClient
-      .get<GetPokemonsResult>('https://pokeapi.co/api/v2/pokemon')
+      .get<GetPokemonsResult>(`${this.baseUrl}/pokemon`)
       .pipe(
         map((getPokemonsResult: GetPokemonsResult) => getPokemonsResult.results)
       );
+  }
+
+  getPokemon(id: number) {
+    return this.httpClient.get<PokemonDetail>(`${this.baseUrl}/pokemon/${id}`);
   }
 
   getPokemonFromUrl(url: string) {
