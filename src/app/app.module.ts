@@ -18,6 +18,10 @@ const routes: Routes = [
     path: '',
     component: PokemonListComponent,
   },
+  {
+    path: 'pokeapi',
+    component: PokemonApiListComponent
+  }
 ];
 
 @NgModule({

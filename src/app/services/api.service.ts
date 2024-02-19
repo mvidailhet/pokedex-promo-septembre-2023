@@ -33,7 +33,7 @@ export class ApiService {
 
   getPokemons(): Observable<Pokemon[]> {
     return this.httpClient
-      .get<GetPokemonsRes>(`${this.baseUrl}gfd/pokemons.json`)
+      .get<GetPokemonsRes>(`${this.baseUrl}/pokemons.json`)
       .pipe(
         map((getPokemonRes: GetPokemonsRes) => {
           const ids = Object.keys(getPokemonRes);
@@ -49,7 +49,7 @@ export class ApiService {
           );
           return of([]);
         }),
-        delay(3000),
+        delay(500),
       );
   }
 
