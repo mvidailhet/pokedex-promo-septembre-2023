@@ -27,7 +27,17 @@ const routes: Routes = [
   },
   {
     path: 'pokemon/:id',
-    component: PokemonComponent
+    component: PokemonComponent,
+    children: [
+      {
+        path: 'general',
+        component: GeneralComponent
+      },
+      {
+        path: 'details',
+        component: DetailsComponent
+      }
+    ],
   },
   {
     path: '',

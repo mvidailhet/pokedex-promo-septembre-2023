@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { NavigationItem } from 'src/app/models/navigation';
 import { CreatePokemon } from 'src/app/models/pokemon';
 import { ApiService } from 'src/app/services/api.service';
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -14,6 +15,17 @@ export class PokemonComponent {
   pokemon?: CreatePokemon;
 
   nextPokemonId: string | null = null;
+
+  navigation: NavigationItem[] = [
+    {
+      routerLink: 'general',
+      title: 'Général'
+    },
+    {
+      routerLink: 'details',
+      title: "Détails"
+    }
+  ];
 
   constructor(
     private activatedRoute: ActivatedRoute,

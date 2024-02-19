@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-
-export interface NavigationItem {
-  routerLink: string;
-  title: string;
-}
+import { NavigationItem } from './models/navigation';
 
 @Component({
   selector: 'app-root',
