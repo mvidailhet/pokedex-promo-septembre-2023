@@ -4,8 +4,13 @@
       <a class="navbar-brand" href="#">Pokedex</a>
       <div class="navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" routerLink="/mypokemons" routerLinkActive="active">Mes pokémons</a>
-          <a class="nav-link" routerLink="/pokeapi" routerLinkActive="active">Pokémons de l'API</a>
+          <a
+            *ngFor="let navigationItem of navigation"
+            class="nav-link"
+            routerLink="{{ navigationItem.routerLink }}"
+            routerLinkActive="active"
+            >{{ navigationItem.title }}</a
+          >
         </div>
       </div>
     </div>
