@@ -11,6 +11,14 @@ import { MyPokemonComponent } from './components/my-pokemon/my-pokemon.component
 import { MousePokemonComponent } from './components/mouse-pokemon/mouse-pokemon.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PokemonApiListComponent } from './components/pokemon-api-list/pokemon-api-list.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: PokemonListComponent,
+  },
+];
 
 @NgModule({
   declarations: [
@@ -20,9 +28,15 @@ import { PokemonApiListComponent } from './components/pokemon-api-list/pokemon-a
     MyPokemonComponent,
     MousePokemonComponent,
     NotificationsComponent,
-    PokemonApiListComponent
+    PokemonApiListComponent,
   ],
-  imports: [BrowserModule, FormsModule, NgbModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    NgbModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
