@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CreatePokemon } from 'src/app/models/pokemon';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -16,12 +16,13 @@ export class PokemonComponent {
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService
   ) {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (id) {
-      this.id = id;
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      const id = paramMap.get('id');
+      if (!id) return;
       this.apiService.getPokemon(id).subscribe((pokemon: CreatePokemon) => {
         this.pokemon = pokemon;
       });
-    }
+    });
+
   }
 }
