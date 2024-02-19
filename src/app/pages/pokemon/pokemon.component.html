@@ -1,13 +1,13 @@
-<div class="container-fluid mt-4">
-  <h1>Bulbizarre</h1>
+<div *ngIf="pokemon" class="container-fluid mt-4">
+  <h1>{{ pokemon.name }}</h1>
 
-  <a routerLink="../">Retour à la liste</a>
+  <a routerLink="/mypokemons">Retour à la liste</a>
 
   <div>
     <p>
       {{ id }}
     </p>
-    Bulbizarre est un super pokemon
+    {{ pokemon.gender }}
   </div>
 
 </div>

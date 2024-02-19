@@ -31,6 +31,10 @@ export class ApiService {
       );
   }
 
+  getPokemon(id: string) {
+    return this.httpClient.get<CreatePokemon>(`${this.baseUrl}/pokemons/${id}.json`);
+  }
+
   getPokemons(): Observable<Pokemon[]> {
     return this.httpClient
       .get<GetPokemonsRes>(`${this.baseUrl}/pokemons.json`)
