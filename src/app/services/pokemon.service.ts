@@ -26,6 +26,17 @@ export class PokemonService {
     });
   }
 
+  getNextPokemonId(id: string) {
+    if (!this.pokemons) return null;
+    const index = this.pokemons.findIndex((pokemon) => {
+      return pokemon.id === id;
+    });
+
+    if (this.pokemons.length <= index + 1) return null;
+
+    return this.pokemons[index + 1].id;
+  }
+
   addPokemon(name: string) {
     if (this.pokemons === undefined) return;
 
