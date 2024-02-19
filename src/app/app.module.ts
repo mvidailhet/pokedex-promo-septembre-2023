@@ -36,6 +36,11 @@ const routes: Routes = [
       {
         path: 'details',
         component: DetailsComponent
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'general'
       }
     ],
   },
