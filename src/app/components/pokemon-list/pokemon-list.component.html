@@ -24,6 +24,7 @@
       [name]="pokemon.name"
       [gender]="pokemon.gender"
       (delete)="onPokemonDelete(pokemonIndex)"
+      (click)="goToPokemonPage(pokemon.id)"
     />
   </div>
 

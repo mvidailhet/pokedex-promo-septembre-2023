@@ -5,14 +5,27 @@
 }
 
 .pokemon-item {
+  transition: background-color 300ms ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   &.gender-male {
     background-color: blue;
     color: white;
+
+    &:hover {
+      background-color: #3232ef;
+    }
   }
 
   &.gender-female {
     background-color: pink;
+
+    &:hover {
+      background-color: #fcd0d8;
+    }
   }
 }
 

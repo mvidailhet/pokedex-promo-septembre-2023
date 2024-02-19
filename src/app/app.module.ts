@@ -12,6 +12,7 @@ import { MousePokemonComponent } from './components/mouse-pokemon/mouse-pokemon.
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PokemonApiListComponent } from './components/pokemon-api-list/pokemon-api-list.component';
 import { RouterModule, Routes } from '@angular/router';
+import { PokemonComponent } from './pages/pokemon/pokemon.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'pokeapi',
     component: PokemonApiListComponent
+  },
+  {
+    path: 'pokemon/:id',
+    component: PokemonComponent
   },
   {
     path: '',
@@ -38,6 +43,7 @@ const routes: Routes = [
     MousePokemonComponent,
     NotificationsComponent,
     PokemonApiListComponent,
+    PokemonComponent,
   ],
   imports: [
     BrowserModule,

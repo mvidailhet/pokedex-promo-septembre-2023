@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pokemon } from 'src/app/models/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -11,7 +12,9 @@ export class PokemonListComponent {
   newPokemonName?: string;
 
   constructor(
-    public pokemonService: PokemonService
+    public pokemonService: PokemonService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   onAddPokemonBtnClick() {
@@ -21,5 +24,9 @@ export class PokemonListComponent {
 
   onPokemonDelete(index: number) {
     this.pokemonService.deletePokemon(index);
+  }
+
+  goToPokemonPage(id: string) {
+    this.router.navigate(['/pokemon', id], { relativeTo: this.activatedRoute });
   }
 }
