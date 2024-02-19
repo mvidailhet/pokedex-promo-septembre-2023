@@ -13,6 +13,8 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { PokemonApiListComponent } from './components/pokemon-api-list/pokemon-api-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PokemonComponent } from './pages/pokemon/pokemon.component';
+import { GeneralComponent } from './pages/pokemon/pages/general/general.component';
+import { DetailsComponent } from './pages/pokemon/pages/details/details.component';
 
 const routes: Routes = [
   {
@@ -44,6 +46,8 @@ const routes: Routes = [
     NotificationsComponent,
     PokemonApiListComponent,
     PokemonComponent,
+    GeneralComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,18 @@
 <div *ngIf="pokemon" class="container-fluid mt-4">
-  <h1>{{ pokemon.name }}</h1>
-
   <a routerLink="/mypokemons">Retour à la liste</a>
 
-  <div>
-    <p>
-      {{ id }}
-    </p>
-    {{ pokemon.gender }}
-  </div>
+  <h1 class="my-4">{{ pokemon.name }} - {{ pokemon.gender }}</h1>
 
-  <button [disabled]="!nextPokemonId" class="btn btn-primary" routerLink="../{{ nextPokemonId }}">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Général</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Détails</a>
+    </li>
+  </ul>
+
+  <button [disabled]="!nextPokemonId" class="btn btn-primary btn-next" routerLink="../{{ nextPokemonId }}">
     Suivant
   </button>
 
